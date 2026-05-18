@@ -1,9 +1,9 @@
 package model;
 
 public record Bill (
-    int order_id,
-    String client_name,
-    String product_name,
+    int orderId,
+    String clientName,
+    String productName,
     int quantity,
-    double total_price
+    double totalPrice
     ){}

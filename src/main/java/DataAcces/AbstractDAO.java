@@ -118,10 +118,61 @@ public class AbstractDAO<T> {
         return null;
     }
 
-    public void update(T t) {
+    public T update(T t) {
         Connection connection = null;
         PreparedStatement statement = null;
+        StringBuilder setSb = new StringBuilder();
+        Field[] fields = entityClass.getDeclaredFields();
 
+
+        for (int i = 1; i < fields.length; i++) {
+            setSb.append("\"").append(fields[i].getName()).append("\" = ?");
+            if (i < fields.length - 1) setSb.append(", ");
+        }
+
+        String query = "UPDATE \"" + entityClass.getSimpleName().toLowerCase() + "\" SET " + setSb + " WHERE id = ?";
+        try {
+            connection = ConnnectionFactory.getConnection();
+            statement = connection.prepareStatement(query);
+            int paramIndex = 1;
+
+
+            for (int i = 1; i < fields.length; i++) {
+                fields[i].setAccessible(true);
+                statement.setObject(paramIndex++, fields[i].get(t));
+            }
+
+            fields[0].setAccessible(true);
+            statement.setObject(paramIndex, fields[0].get(t));
+
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            ConnnectionFactory.closeConnection(connection);
+        }
+        return t;
+    }
+
+    public boolean delete(int id) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        String query = "DELETE FROM \"" + entityClass.getSimpleName().toLowerCase() + "\" WHERE id = ?";
+        boolean isDeleted = false;
+
+        try {
+            connection = ConnnectionFactory.getConnection();
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, id);
+
+            int rowsAffected = statement.executeUpdate();
+            isDeleted = (rowsAffected > 0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnnectionFactory.closeConnection(connection);
+        }
+        return isDeleted;
     }
 
 }
