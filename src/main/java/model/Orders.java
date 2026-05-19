@@ -1,12 +1,12 @@
 package model;
 
-public class Order {
+public class Orders {
     private int id;
     private int productId;
     private int clientId;
     private int quantity;
 
-    public Order(int id, int productId, int clientId, int quantity) {
+    public Orders(int id, int productId, int clientId, int quantity) {
         this.id = id;
         this.productId = productId;
         this.clientId = clientId;

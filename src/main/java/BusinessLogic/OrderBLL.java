@@ -12,8 +12,12 @@ public class OrderBLL {
     private final ClientDAO clientDAO = new ClientDAO();
     private final BillDAO billDAO = new BillDAO();
 
-    public List<Order> viewAllOrders() {
+    public List<Orders> viewAllOrders() {
         return orderDAO.findAll();
+    }
+
+    public List<Bill> viewAllBills() {
+        return billDAO.findAll();
     }
 
     public synchronized void createOrder(int clientId, int productId, int requestedQuantity) {
@@ -32,12 +36,13 @@ public class OrderBLL {
         productDAO.update(product);
 
 
-        Order order = new Order(0, clientId, productId, requestedQuantity);
-        orderDAO.insert(order);
+        Orders orders = new Orders(0, clientId, productId, requestedQuantity);
+        Orders saveorders = orderDAO.insert(orders);
 
 
         double totalPrice = product.getPrice() * requestedQuantity;
-        Bill bill = new Bill(order.getId(), client.getName(), product.getName(), requestedQuantity, totalPrice);
+        Bill bill = new Bill(saveorders.getId(), client.getName(), product.getName(), requestedQuantity, totalPrice);
+
         billDAO.insert(bill);
     }
 }

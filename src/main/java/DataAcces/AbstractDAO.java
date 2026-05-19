@@ -109,6 +109,12 @@ public class AbstractDAO<T> {
                 statement.setObject(paramIndex++, fields[i].get(t));
             }
             statement.executeUpdate();
+
+            java.sql.ResultSet generatedKeys = statement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                fields[0].setAccessible(true);
+                fields[0].set(t, generatedKeys.getInt(1));
+            }
             return t;
         } catch (Exception e) {
             e.printStackTrace();
