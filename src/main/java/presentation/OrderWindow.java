@@ -1,4 +1,4 @@
-package GUI;
+package presentation;
 
 import BusinessLogic.OrderBLL;
 import javax.swing.*;

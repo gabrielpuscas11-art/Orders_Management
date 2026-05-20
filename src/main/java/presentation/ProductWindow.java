@@ -1,11 +1,9 @@
-package GUI;
+package presentation;
 
-import presentation.TableGenerator;
 import BusinessLogic.ProductBLL;
 import model.Product;
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
 import java.util.List;
 
 public class ProductWindow extends JFrame {

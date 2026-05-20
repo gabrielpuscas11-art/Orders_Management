@@ -1,6 +1,5 @@
-package GUI;
+package presentation;
 
-import presentation.TableGenerator;
 import BusinessLogic.OrderBLL;
 import model.Bill;
 import javax.swing.*;

@@ -1,4 +1,4 @@
-package GUI;
+package presentation;
 
 
 import javax.swing.*;
