@@ -47,6 +47,9 @@ public class OrderBLL {
         if (product.getStock() < requestedQuantity) {
             throw new IllegalArgumentException("Under-stock! Stoc insuficient pentru " + product.getName());
         }
+        if(requestedQuantity <= 0) {
+            throw new IllegalArgumentException("Trebuie sa fie un stock pozitiv!");
+        }
 
 
         product.setStock(product.getStock() - requestedQuantity);
