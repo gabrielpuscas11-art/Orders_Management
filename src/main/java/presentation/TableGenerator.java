@@ -4,8 +4,19 @@ import javax.swing.table.DefaultTableModel;
 import java.lang.reflect.Field;
 import java.util.List;
 
+/**
+ * Clasa se ocupa cu generarea automata a unui tabel Swing.
+ * Foloseste reflexia pentru a extrage proprietatile obiectelor din lista.
+ */
 public class TableGenerator {
 
+    /**
+     * Creeaza un model de tabel pe baza unei liste de obiecte primite ca parametru.
+     * Numele coloanelor sunt luate automat din numele campurilor clasei respective.
+     *
+     * @param objects Lista de obiecte care vor fi introduse in tabel
+     * @return Modelul de tabel (DefaultTableModel) populat cu date
+     */
     public static DefaultTableModel createTable(List<?> objects) {
         if(objects == null || objects.isEmpty()) {
             return new DefaultTableModel();

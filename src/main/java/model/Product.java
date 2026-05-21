@@ -7,6 +7,14 @@ public class Product {
     private int stock;
 
     public Product(){}
+    /**
+     * Constructor cu parametri pentru initializarea completa a unui produs.
+     *
+     * @param id Identificatorul unic al produsului
+     * @param name Numele produsului
+     * @param price Pretul unitar
+     * @param stock Cantitatea disponibila in depozit
+     */
     public Product(int id, String name, double price, int stock) {
         this.id = id;
         this.name = name;

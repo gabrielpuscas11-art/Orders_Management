@@ -11,7 +11,9 @@ public class ConnnectionFactory {
     private static final String PASS ="2004Gabi%";
 
     private static final ConnnectionFactory instance=new ConnnectionFactory();
-
+    /**
+     * Constructor privat care incarca driverul bazei de date.
+     */
     private ConnnectionFactory(){
         try {
             Class.forName(DRIVER);
@@ -29,11 +31,19 @@ public class ConnnectionFactory {
         }
         return connection;
     }
-
+    /**
+     * Returneaza o conexiune activa catre baza de date.
+     *
+     * @return Obiectul Connection operational
+     */
     public static Connection getConnection(){
         return instance.createConnection();
     }
-
+    /**
+     * Inchide in siguranta conexiunea primita ca parametru, daca aceasta este deschisa.
+     *
+     * @param connection Conexiunea care trebuie inchisa
+     */
     public static void closeConnection(Connection connection){
         if(connection!=null){
             try {

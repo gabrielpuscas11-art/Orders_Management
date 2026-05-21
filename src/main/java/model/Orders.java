@@ -6,6 +6,14 @@ public class Orders {
     private int clientId;
     private int quantity;
 
+    /**
+     * Constructor cu parametri pentru initializarea unei comenzi.
+     *
+     * @param id Identificatorul unic al comenzii
+     * @param clientId ID-ul clientului care plaseaza comanda
+     * @param productId ID-ul produsului comandat
+     * @param quantity Cantitatea de produse solicitata
+     */
     public Orders(int id, int clientId, int productId, int quantity) {
         this.id = id;
         this.productId = productId;

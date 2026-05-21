@@ -6,6 +6,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * Fereastra principala pentru gestionarea produselor din aplicatie.
+ * Permite operatii de adaugare, editare, stergere si vizualizare.
+ */
 public class ProductWindow extends JFrame {
         private final JTextField txtId = new JTextField(5);
         private final JTextField txtName = new JTextField(15);
@@ -13,7 +17,9 @@ public class ProductWindow extends JFrame {
         private final JTextField txtStock = new JTextField(10);
         private final JTable table = new JTable();
         private final ProductBLL productBLL = new ProductBLL();
-
+    /**
+     * Constructorul initializeaza interfata grafica si butoanele.
+     */
         public ProductWindow() {
             setTitle("Product Operations");
             setSize(600, 400);
@@ -50,7 +56,9 @@ public class ProductWindow extends JFrame {
             refreshTableAction();
             setLocationRelativeTo(null);
         }
-
+    /**
+     * Citeste datele din campuri si adauga un produs nou in baza de date.
+     */
         private void addProductAction() {
             try {
                 double price = Double.parseDouble(txtPrice.getText());
@@ -66,7 +74,9 @@ public class ProductWindow extends JFrame {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "Eroare", JOptionPane.ERROR_MESSAGE);
             }
         }
-
+    /**
+     * Modifica un produs existent identificat dupa ID.
+     */
         private void editProductAction() {
             try {
                 int id = Integer.parseInt(txtId.getText());
@@ -83,7 +93,9 @@ public class ProductWindow extends JFrame {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "Eroare", JOptionPane.ERROR_MESSAGE);
             }
         }
-
+    /**
+     * Sterge un produs din baza de date pe baza ID-ului introdus.
+     */
         private void deleteProductAction() {
             try {
                 int id = Integer.parseInt(txtId.getText());
@@ -96,7 +108,9 @@ public class ProductWindow extends JFrame {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "Eroare", JOptionPane.ERROR_MESSAGE);
             }
         }
-
+    /**
+     * Reincarca toate produsele din baza de date si actualizeaza tabelul.
+     */
         private void refreshTableAction() {
             try {
                 List<Product> list = productBLL.viewAllProducts();
@@ -105,7 +119,9 @@ public class ProductWindow extends JFrame {
                 table.setModel(new javax.swing.table.DefaultTableModel());
             }
         }
-
+    /**
+     * Goleste toate campurile de text din interfata.
+     */
         private void clearFields() {
             txtId.setText("");
             txtName.setText("");

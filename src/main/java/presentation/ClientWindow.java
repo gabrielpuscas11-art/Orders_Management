@@ -6,6 +6,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * Fereastra principala pentru gestionarea clientilor din aplicatie.
+ * Permite operatii de adaugare, editare, stergere si vizualizare.
+ */
 public class ClientWindow extends JFrame {
     private final JTextField txtId = new JTextField(5);
     private final JTextField txtName = new JTextField(15);
@@ -13,7 +17,9 @@ public class ClientWindow extends JFrame {
     private final JTextField txtAddress = new JTextField(15);
     private final JTable table = new JTable();
     private final ClientBLL clientBLL = new ClientBLL();
-
+    /**
+     * Constructorul initializeaza interfata grafica si butoanele pentru clienti.
+     */
     public ClientWindow() {
         setTitle("Client Operations");
         setSize(800, 500);
@@ -48,7 +54,9 @@ public class ClientWindow extends JFrame {
 
         refreshTableAction();
     }
-
+    /**
+     * Citeste datele din campuri si adauga un client nou in baza de date.
+     */
     private void addClientAction() {
         try {
             Client c = new Client(0, txtName.getText(), txtEmail.getText(), txtAddress.getText());
@@ -58,7 +66,9 @@ public class ClientWindow extends JFrame {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Eroare", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    /**
+     * Modifica datele unui client existent identificat dupa ID.
+     */
     private void editClientAction() {
         try {
             int id = Integer.parseInt(txtId.getText());
@@ -69,7 +79,9 @@ public class ClientWindow extends JFrame {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Eroare", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    /**
+     * Sterge un client din baza de date pe baza ID-ului introdus.
+     */
     private void deleteClientAction() {
         try {
             int id = Integer.parseInt(txtId.getText());
@@ -79,7 +91,9 @@ public class ClientWindow extends JFrame {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Eroare", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    /**
+     * Reincarca toti clientii din baza de date si actualizeaza tabelul.
+     */
     private void refreshTableAction() {
         try {
             List<Client> list = clientBLL.viewAllClients();

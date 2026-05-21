@@ -8,6 +8,14 @@ public class Client {
 
     public Client(){}
 
+    /**
+     * Constructor cu parametri pentru initializarea completa a unui client.
+     *
+     * @param id Identificatorul unic al clientului
+     * @param name Numele complet
+     * @param email Adresa de e-mail
+     * @param address Adresa de domiciliu sau livrare
+     */
     public Client(int id, String name, String email, String address) {
         this.id = id;
         this.name = name;

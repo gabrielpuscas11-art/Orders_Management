@@ -3,13 +3,18 @@ package presentation;
 import BusinessLogic.OrderBLL;
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * Fereastra pentru crearea si plasarea unei comenzi noi.
+ * Permite introducerea ID-ului de client, produs si a cantitatii.
+ */
 public class OrderWindow extends JFrame {
     private final JTextField txtClientId = new JTextField(5);
     private final JTextField txtProductId = new JTextField(5);
     private final JTextField txtQuantity = new JTextField(5);
     private final OrderBLL orderBLL = new OrderBLL();
-
+    /**
+     * Constructorul configureaza interfata grafica pentru comenzi.
+     */
     public OrderWindow() {
         setTitle("Create Product Order");
         setSize(400, 250);
@@ -30,7 +35,9 @@ public class OrderWindow extends JFrame {
 
         setLocationRelativeTo(null);
     }
-
+    /**
+     * Citeste datele introduse si apeleaza logica de plasare a comenzii.
+     */
     private void placeOrderAction() {
         try {
             int clientId = Integer.parseInt(txtClientId.getText());
@@ -47,7 +54,9 @@ public class OrderWindow extends JFrame {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Eroare Stoc", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    /**
+     * Goleste campurile de introducere a datelor.
+     */
     private void clearFields() {
         txtClientId.setText("");
         txtProductId.setText("");

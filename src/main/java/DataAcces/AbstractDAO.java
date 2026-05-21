@@ -22,7 +22,11 @@ public class AbstractDAO<T> {
         }
         return text.toString();
     }
-
+    /**
+     * Returneaza toate inregistrarile din tabelul corespunzator entitatii.
+     *
+     * @return O lista cu toate obiectele gasite in baza de date
+     */
     public List<T> findAll() {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -40,7 +44,12 @@ public class AbstractDAO<T> {
         }
         return new ArrayList<>();
     }
-
+    /**
+     * Cauta o inregistrare specifica in baza de date pe baza ID-ului.
+     *
+     * @param id Identificatorul unic cautat
+     * @return Obiectul gasit sau null daca nu exista
+     */
     public T findById(int id) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -81,7 +90,12 @@ public class AbstractDAO<T> {
         }
         return list;
     }
-
+    /**
+     * Insereaza un obiect nou in baza de date si ii salveaza ID-ul generat.
+     *
+     * @param t Obiectul care trebuie salvat
+     * @return Obiectul inserat, actualizat cu noul ID
+     */
     public T insert(T t) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -123,7 +137,12 @@ public class AbstractDAO<T> {
         }
         return null;
     }
-
+    /**
+     * Actualizeaza campurile unei inregistrari existente din baza de date.
+     *
+     * @param t Obiectul modificat ce contine ID-ul existent
+     * @return Obiectul actualizat
+     */
     public T update(T t) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -159,7 +178,12 @@ public class AbstractDAO<T> {
         }
         return t;
     }
-
+    /**
+     * Sterge o inregistrare din baza de date pe baza ID-ului.
+     *
+     * @param id Identificatorul unic al randului ce trebuie sters
+     * @return True daca stergerea a reusit, altfel false
+     */
     public boolean delete(int id) {
         Connection connection = null;
         PreparedStatement statement = null;

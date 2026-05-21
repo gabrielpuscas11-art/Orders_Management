@@ -4,7 +4,10 @@ package presentation;
 import javax.swing.*;
 import java.awt.*;
 
-
+/**
+ * Meniul principal al aplicatiei de gestiune a depozitului.
+ * Ofera butoane pentru deschiderea ferestrelor specifice fiecarei operatii.
+ */
 public class MainFrame extends JFrame {
     public MainFrame() {
         setTitle("Warehouse Orders Management");

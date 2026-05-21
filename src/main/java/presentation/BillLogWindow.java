@@ -5,11 +5,16 @@ import model.Bill;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
-
+/**
+ * Fereastra pentru vizualizarea istoricului de facturi (Bills).
+ * Afiseaza datele intr-un tabel si nu permite modificarea lor.
+ */
 public class BillLogWindow extends JFrame {
     private final JTable table = new JTable();
     private final OrderBLL orderBLL = new OrderBLL();
-
+    /**
+     * Constructorul configureaza interfata grafica pentru istoricul facturilor.
+     */
     public BillLogWindow() {
         setTitle("Bills History Log (Immutable)");
         setSize(600, 450);
@@ -27,7 +32,9 @@ public class BillLogWindow extends JFrame {
         refreshTableAction();
         setLocationRelativeTo(null);
     }
-
+    /**
+     * Reincarca toate facturile emise si actualizeaza datele din tabel.
+     */
     private void refreshTableAction() {
         try {
             List<Bill> bills = orderBLL.viewAllBills();
