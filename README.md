@@ -1,0 +1,1 @@
+A Java-based backend application designed to automate and manage product orders, clients, and inventory. The project focuses on implementing robust database interactions and dynamic component rendering using advanced Java features.
